@@ -231,7 +231,7 @@ void find_trace_files_or_die(const std::string &dir,
 }
 
 int main() {
-    const auto profileName = std::string("huffman_coding");
+    const auto profileName = std::string("batch_then_drain");
     const auto traceDir = std::string("../../traces") + "/" + profileName;
 
     std::vector<std::string> traceFiles;
@@ -255,7 +255,7 @@ int main() {
         RunMetaData run_meta_data;
         load_trace_strict_header(traceFile, run_meta_data, operations);
 
-        if (run_meta_data.N < 1 << 16) {
+        if (run_meta_data.N < 1 << 15) {
             RunResult oneRunResult_i0(run_meta_data);
             QuadraticOracle oracle(compare_pair);
             oneRunResult_i0.impl = std::string("quadratic_oracle");

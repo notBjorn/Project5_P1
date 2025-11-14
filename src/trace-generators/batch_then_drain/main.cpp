@@ -18,7 +18,7 @@ void generateTrace(const unsigned seed,
     // create and open the output file name
     auto outputFileName = config.makeTraceFileName(seed, n);
     std::cout << "File name: " << outputFileName << std::endl;
-    std::ofstream out(outputFileName.c_str());`
+    std::ofstream out(outputFileName.c_str());
     if (!out.is_open()) {
         std::cerr << "Failed to open file " << outputFileName << std::endl;
         exit(1);
@@ -33,15 +33,17 @@ void generateTrace(const unsigned seed,
     for (unsigned i = 0; i < n; ++i) {
         out << "I " << std::setw(spaceBeforeNumber) << dist(gen) << std::setw(spaceBeforeNumber) << id++ << "\n";
     }
-    // Generate N-1 extractMin, extractMin, insert
-    const unsigned stop_idx = 2 * n - 1;
-    for (unsigned i = n; i < stop_idx; ++i) {
-        out << "E\nE\n";
-        out << "I " << std::setw(spaceBeforeNumber) << dist(gen) << std::setw(spaceBeforeNumber) << id++ << "\n";
+
+    // we are not doing this. this was for huffman where we extract twice and then insert their combination
+    // we just extract_min
+    for (unsigned i = 0; i < n; ++i) {
+        out << "E" << "\n"; // Just the E's are required to the extract_min
     }
     out.close();
 }
 
+/*
+ // Don't need this code cause we aren't using generating for huffman tree, we just need to use n
 int choose_key_upper_bound(unsigned int N) {
     // You can change the upperbound to
     // see how that effects the frequency (key)
@@ -57,6 +59,7 @@ int choose_key_upper_bound(unsigned int N) {
         return 64;
     return 128; // for 2^19 and 2^20
 }
+*/
 
 int main() {
 
@@ -66,11 +69,9 @@ int main() {
         std::mt19937 rng(seed);   // create a random-number generator using "seed"
 
         for (auto n: config.Ns) {
-            // We need to limit the range of values that get generated.
-            // To model the Huffman tree behavior, we want to generate a lot of
-            // duplicates. So, we use choose_key_upper_bound to increase
-            // the upperbound according to the size of the trace.
-            const unsigned key_min = 1, key_max = choose_key_upper_bound(n);
+
+            // not sure if I need this
+            const unsigned key_min = 1, key_max = 1u << 20; // 2^20 or 1048576
             std::uniform_int_distribution<int> dist(key_min, key_max);
 
             generateTrace(seed, n, config, dist, rng);
