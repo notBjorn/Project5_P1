@@ -18,7 +18,7 @@ void generateTrace(const unsigned seed,
     // create and open the output file name
     auto outputFileName = config.makeTraceFileName(seed, n);
     std::cout << "File name: " << outputFileName << std::endl;
-    std::ofstream out(outputFileName.c_str());
+    std::ofstream out(outputFileName.c_str());`
     if (!out.is_open()) {
         std::cerr << "Failed to open file " << outputFileName << std::endl;
         exit(1);
@@ -61,7 +61,7 @@ int choose_key_upper_bound(unsigned int N) {
 int main() {
 
     // TraceConfig provides pre-configured values such as N and seed
-    TraceConfig config( std::string("huffman_coding"));
+    TraceConfig config( std::string("batch_then_drain")); //updated the file name
     for (auto seed: config.seeds) {  // currently, we are using one seed only.
         std::mt19937 rng(seed);   // create a random-number generator using "seed"
 

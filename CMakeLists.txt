@@ -37,3 +37,19 @@ add_executable(huffman_trace
 add_executable(batch_then_trace
         src/trace-generators/batch_then_drain/main.cpp
 )
+
+add_executable(harness_fBTD
+        src/harness_fBTD/Operation.hpp
+        src/harness_fBTD/main.cpp
+        src/implementations/BinaryHeapInVector/BinaryHeapInVector.cpp
+        src/implementations/BinaryHeapInVector/BinaryHeapInVector.hpp
+        utils/comparator.cpp
+        src/implementations/BinomialQueues/BinomialQueue.cpp
+        src/implementations/BinomialQueues/BinomialQueue.hpp
+        src/implementations/BinomialQueues/BQnode.cpp
+        src/harness_fBTD/RunMetaData.hpp
+        src/implementations/LinearBaseLine/LinearBaseLine.cpp
+        src/implementations/LinearBaseLine/LinearBaseLine.hpp
+        src/implementations/Oracle/QuadraticOracle.cpp
+        src/implementations/Oracle/QuadraticOracle.hpp
+)
