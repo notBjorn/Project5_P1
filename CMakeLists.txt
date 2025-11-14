@@ -32,3 +32,8 @@ add_executable(harness
 add_executable(huffman_trace
         src/trace-generators/huffman_coding/main.cpp
 )
+
+
+add_executable(batch_then_trace
+        src/trace-generators/batch_then_drain/main.cpp
+)
