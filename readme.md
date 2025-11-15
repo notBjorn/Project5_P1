@@ -1,12 +1,8 @@
-
 > by Rishav Sharma,  SSU ID **007747214**
 > [Github Repo](https://github.com/notBjorn/Project5_P1)
 
->[!tip]
-> Include a README, as usual. However, you must clearly specify the command(s) needed to compile and run your executables—one for the generator and one for the harness. Additionally, describe what to expect after running the generator or the harness: which files are generated and where they are stored. The output files should, of course, be saved in the directories that already exist in the project you were given.
-
 ## **Collaboration & Sources**
-Showed my output for trace files to my peers to ask if they could find any error. I did use AI but not for help with the code but mainly in finding where I wanted to go as the directory was so big and when I first started the project I had issues finding the code that I wanted to modify and understand . For example I wanted to see how find min was working
+Showed my output for trace files to my peers to ask if they could find any error. I did use AI but not for help with the code but mainly in finding where I wanted to go as the directory was so big and when I first started the project I had issues finding the code that I wanted to modify and understand . For example I wanted to see how find min was working but wasn't sure where the `findMin` was so I asked the GPT about it and found it in the harness.
 
 ## **Implementation Details**
 ### Trace Generator
@@ -21,7 +17,7 @@ Showed my output for trace files to my peers to ask if they could find any error
 - modified the string with the new filename in the `traceConfig config` now `traceCofig` should generate appropriate output.
 - Commented out the code for `choose_key_upper_bound` as that is not needed in our case
 - changed `key_max` to be just `n` in trace loop
-    - after sharing my trace files to confirm what i had was correct, Will pointed out that my insert values were really small. I realized that my output was scaling with `N`  and the instructions say to have the max be `2^20` I modified that and now it works better.
+  - after sharing my trace files to confirm what i had was correct, Will pointed out that my insert values were really small. I realized that my output was scaling with `N`  and the instructions say to have the max be `2^20` I modified that and now it works better.
 - changed the output for `extract_min` as we are only extracting min and not using the `E E I` behavior that is required in the Huffman tree.
 - Had to edit the configuration of the working directory to be the directory that is supposed to contain, batch then drain traces.
 - `C:/Users/Bhalu Da PC/CLionProjects/Project5_P1/src/trace-generators/batch_then_drain`
@@ -62,11 +58,13 @@ E
 - Copied over the all the harness files into this directory and then modified the `Cmake` file to have another profile that included these files. Just copied the code from the Huffman profile `add_executable` and modified the directory name and kept everything else the same.
 - Modified the input trace files in the Harness to the batch-then-drain trace
 - Changed the upper limit for quadratic oracle to be 2^15 and not 16 as that was causing the graph to look bad. This was pointed out by Will after I showed him my graph.
+- Wrote code that generates the `.csv` files.
   ![the output graph](images/img.png)
 ## **Testing & Status**
 ***The code to my knowledge is working perfectly***
 ### What i did to run my code
 - Created two different configurations in clion
-    - One for the trace generator called `batch_then_trace` with the working directory `C:/Users/Bhalu Da PC/CLionProjects/Project5_P1/src/trace-generators/batch_then_drain`
-    - The second config was for the new harness called `harness_fBTD` with the working directory `C:/Users/Bhalu Da PC/CLionProjects/Project5_P1/traces/batch_then_drain`
-- First generate the trace by running config `batch_then_trace`, this will create the trace files that the harness will use to time the operations. To use the harness switch over to `harness_fBTD` config and run it this should generate the `csv` output that can be used in html graph. In the html graph select `browse` to import the desired csv file/
+  - One for the trace generator called `batch_then_trace` with the working directory `C:/Users/Bhalu Da PC/CLionProjects/Project5_P1/src/trace-generators/batch_then_drain`
+  - The second config was for the new harness called `harness_fBTD` with the working directory `C:/Users/Bhalu Da PC/CLionProjects/Project5_P1/traces/batch_then_drain`
+- First generate the trace by running config `batch_then_trace`, this will create the trace files that the harness will use to time the operations. To use the harness switch over to `harness_fBTD` config and run it this should generate the `csv` output that can be used in html graph. In the html graph select `browse` to import the desired csv file.
+- The csv file is being generated in the `csvs` directory.
