@@ -1,3 +1,22 @@
+---
+date made: 2025-11-14
+time made: 12:13
+year: 2025
+tags:  
+- CS315
+- Fall2025
+aliases: ## Alternative terms for the doc
+description: "Readme for the project 5 part 1"
+
+## Categorizations.
+isWork: true
+isPersonal: false
+isCasual: false
+isLearn: true
+isMisc: false
+isJournal: false
+isCoursework: true
+---
 > by Rishav Sharma,  SSU ID **007747214**
 > [Github Repo](https://github.com/notBjorn/Project5_P1)
 
