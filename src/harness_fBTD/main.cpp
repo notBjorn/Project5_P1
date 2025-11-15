@@ -295,5 +295,17 @@ int main() {
         std::cout << run.to_csv_row() << std::endl;
     }
 
+
+    // Write CSV file
+    std::ofstream csv("../../csvs/batch_then_drain_results.csv", std::ios::trunc);// the file is away from the working directory
+    // check if I can open the file
+    if (!csv.is_open()) {
+        std::cerr << "Failed to open CSV file for writing\n";
+        return 1;
+    }
+    csv << RunResult::csv_header() << std::endl; // write the header
+    for (auto run: runResults) {
+        csv << run.to_csv_row() << std::endl; // write the results
+    }
     return 0;
 }
